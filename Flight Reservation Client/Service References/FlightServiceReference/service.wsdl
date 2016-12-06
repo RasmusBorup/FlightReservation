@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FlightCaseService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Flight_Reservation.DataLayer" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFlightCaseService_CreateReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReservation" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_CreateReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindReservaton_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindReservaton" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindReservaton_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindReservatonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindReservationFlights_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindReservationFlights" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindReservationFlights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindReservationFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_CreateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_CreateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindFlights_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindFlights" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindFlights_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindFlightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindCustomerByPhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindCustomerByPhone" />
+  </wsdl:message>
+  <wsdl:message name="IFlightCaseService_FindCustomerByPhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindCustomerByPhoneResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFlightCaseService">
+    <wsdl:operation name="CreateReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightCaseService/CreateReservation" message="tns:IFlightCaseService_CreateReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightCaseService/CreateReservationResponse" message="tns:IFlightCaseService_CreateReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindReservaton">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightCaseService/FindReservaton" message="tns:IFlightCaseService_FindReservaton_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightCaseService/FindReservatonResponse" message="tns:IFlightCaseService_FindReservaton_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindReservationFlights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightCaseService/FindReservationFlights" message="tns:IFlightCaseService_FindReservationFlights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightCaseService/FindReservationFlightsResponse" message="tns:IFlightCaseService_FindReservationFlights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightCaseService/CreateCustomer" message="tns:IFlightCaseService_CreateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightCaseService/CreateCustomerResponse" message="tns:IFlightCaseService_CreateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightCaseService/FindCustomer" message="tns:IFlightCaseService_FindCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightCaseService/FindCustomerResponse" message="tns:IFlightCaseService_FindCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindFlights">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightCaseService/FindFlights" message="tns:IFlightCaseService_FindFlights_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightCaseService/FindFlightsResponse" message="tns:IFlightCaseService_FindFlights_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomerByPhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightCaseService/FindCustomerByPhone" message="tns:IFlightCaseService_FindCustomerByPhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightCaseService/FindCustomerByPhoneResponse" message="tns:IFlightCaseService_FindCustomerByPhone_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFlightCaseService" type="tns:IFlightCaseService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateReservation">
+      <soap:operation soapAction="http://tempuri.org/IFlightCaseService/CreateReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindReservaton">
+      <soap:operation soapAction="http://tempuri.org/IFlightCaseService/FindReservaton" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindReservationFlights">
+      <soap:operation soapAction="http://tempuri.org/IFlightCaseService/FindReservationFlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomer">
+      <soap:operation soapAction="http://tempuri.org/IFlightCaseService/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomer">
+      <soap:operation soapAction="http://tempuri.org/IFlightCaseService/FindCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindFlights">
+      <soap:operation soapAction="http://tempuri.org/IFlightCaseService/FindFlights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCustomerByPhone">
+      <soap:operation soapAction="http://tempuri.org/IFlightCaseService/FindCustomerByPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlightCaseService">
+    <wsdl:port name="BasicHttpBinding_IFlightCaseService" binding="tns:BasicHttpBinding_IFlightCaseService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/Flight_Reservation/WCF/FlightCaseService/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

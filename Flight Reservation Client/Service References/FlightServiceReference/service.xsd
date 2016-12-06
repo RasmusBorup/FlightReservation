@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Flight_Reservation.DataLayer" />
+  <xs:element name="CreateReservation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="amount" type="xs:int" />
+        <xs:element minOccurs="0" name="customerNo" type="xs:int" />
+        <xs:element minOccurs="0" name="from" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destination" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="maxLayovers" type="xs:int" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateReservationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateReservationResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindReservaton">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="reservationNo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindReservatonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Flight_Reservation.DataLayer" minOccurs="0" name="FindReservatonResult" nillable="true" type="q1:Reservation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindReservationFlights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="reservationNo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindReservationFlightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Flight_Reservation.DataLayer" minOccurs="0" name="FindReservationFlightsResult" nillable="true" type="q2:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="postalCode" type="xs:int" />
+        <xs:element minOccurs="0" name="phoneNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateCustomerResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerNo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Flight_Reservation.DataLayer" minOccurs="0" name="FindCustomerResult" nillable="true" type="q3:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindFlights">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="from" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destination" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="maxLayovers" type="xs:int" />
+        <xs:element minOccurs="0" name="date" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="seatAmount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindFlightsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Flight_Reservation.DataLayer" minOccurs="0" name="FindFlightsResult" nillable="true" type="q4:ArrayOfFlight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindCustomerByPhone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="phoneNo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindCustomerByPhoneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Flight_Reservation.DataLayer" minOccurs="0" name="FindCustomerByPhoneResult" nillable="true" type="q5:Customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dmab0913_4" Class="DBConnectionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Balder.Ucn.dk;Initial Catalog=dmab0913_4;Persist Security Info=True;User ID=dmab0913_4" SettingsObjectName="Flight_Reservation.Properties.Settings" SettingsPropertyName="dmab0913_4ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Airport" Member="TblAirports">
+    <Type Name="TblAirport">
+      <Column Name="AirportCode" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Airport_Route" Member="Routes" ThisKey="AirportCode" OtherKey="EndAirport" Type="TblRoute" />
+      <Association Name="Airport_Route1" Member="TblRoutes" ThisKey="AirportCode" OtherKey="StartAirport" Type="TblRoute" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Seat" Member="TblSeats">
+    <Type Name="TblSeat">
+      <Column Name="FlightNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Reserved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SeatNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RowNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Flight_Seat" Member="TblFlight" ThisKey="FlightNo" OtherKey="FlightNo" Type="TblFlight" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="TblCustomers">
+    <Type Name="TblCustomer">
+      <Column Name="FName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNo" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerNo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Customer_Reservation" Member="TblReservations" ThisKey="CustomerNo" OtherKey="CustomerNo" Type="TblReservation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Flight" Member="TblFlights">
+    <Type Name="TblFlight">
+      <Column Name="FlightNo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DepartureTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="ArrivalTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="DepartureDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ArrivalDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TotalSeats" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReservedSeats" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RouteNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Flight_Seat" Member="TblSeats" ThisKey="FlightNo" OtherKey="FlightNo" Type="TblSeat" />
+      <Association Name="Flight_PartReservation" Member="TblPartReservations" ThisKey="FlightNo" OtherKey="FlightNo" Type="TblPartReservation" />
+      <Association Name="Route_Flight" Member="TblRoute" ThisKey="RouteNo" OtherKey="RouteNo" Type="TblRoute" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartReservation" Member="TblPartReservations">
+    <Type Name="TblPartReservation">
+      <Column Name="FlightNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ReservationNo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Flight_PartReservation" Member="TblFlight" ThisKey="FlightNo" OtherKey="FlightNo" Type="TblFlight" IsForeignKey="true" />
+      <Association Name="Reservation_PartReservation" Member="TblReservation" ThisKey="ReservationNo" OtherKey="ReservationNo" Type="TblReservation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reservation" Member="TblReservations">
+    <Type Name="TblReservation">
+      <Column Name="ReservationNo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TotalPrice" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Reservation_PartReservation" Member="TblPartReservations" ThisKey="ReservationNo" OtherKey="ReservationNo" Type="TblPartReservation" />
+      <Association Name="Customer_Reservation" Member="TblCustomer" ThisKey="CustomerNo" OtherKey="CustomerNo" Type="TblCustomer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Route" Member="TblRoutes">
+    <Type Name="TblRoute">
+      <Column Name="StartAirport" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="EndAirport" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RouteNo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Price" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Route_Flight" Member="TblFlights" ThisKey="RouteNo" OtherKey="RouteNo" Type="TblFlight" />
+      <Association Name="Airport_Route" Member="Airport" ThisKey="EndAirport" OtherKey="AirportCode" Type="TblAirport" IsForeignKey="true" />
+      <Association Name="Airport_Route1" Member="TblAirport" ThisKey="StartAirport" OtherKey="AirportCode" Type="TblAirport" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
